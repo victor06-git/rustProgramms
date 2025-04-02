@@ -57,11 +57,11 @@ impl Default for App {
     fn default() -> Self {
         let mut app = Self {
             items: vec![
-                Item::new("Victor", "Usuario principal de la aplicación"),
-                Item::new("Programación", "Temas relacionados con desarrollo de software"),
-                Item::new("Rust", "Lenguaje de programación seguro y concurrente"),
-                Item::new("TUI", "Interfaces de usuario en terminal"),
-                Item::new("Salir", "Cerrar la aplicación"),
+                Item::new("Victor", "Principal User"),
+                Item::new("Programmation", "Things about software"),
+                Item::new("Rust", "Programming language safe and fast"),
+                Item::new("TUI", "User Interface in terminal"),
+                Item::new("Exit", "Quit the app"),
             ],
             state: ListState::default(),
             show_details: false,
@@ -112,25 +112,30 @@ impl App {
     }
 
     fn on_key(&mut self, key: KeyEvent) {
-        match key.code {
-            KeyCode::Up => self.previous(),
-            KeyCode::Down => self.next(),
-            KeyCode::Enter => self.toggle_details(),
-            KeyCode::Char('q') => self.should_quit = true,
-            KeyCode::Esc => {
-                if self.show_details {
-                    self.show_details = false;
-                } else {
-                    self.should_quit = true;
+
+        // Solo permitir navegación si no se están mostrando detalles
+        if !self.show_details {
+            match key.code {
+                KeyCode::Up => self.previous(),
+                KeyCode::Down => self.next(),
+                KeyCode::Enter => self.toggle_details(),
+                KeyCode::Char('q') => self.should_quit = true,
+                KeyCode::Esc => {
+                    self.should_quit = true; // Salir si se presiona ESC
                 }
+                _ => {}
             }
-            _ => {}
+        } else {
+            // Si se están mostrando detalles, only go back
+            if key.code == KeyCode::Esc {
+                self.show_details = false; // Ocultar detalles
+            }
         }
     }
 
     fn toggle_details(&mut self) {
         if let Some(selected) = self.state.selected() {
-            if self.items[selected].title == "Salir" {
+            if self.items[selected].title == "Exit" {
                 self.should_quit = true;
                 return;
             }
@@ -166,7 +171,7 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
 
     // Título
     let title = Paragraph::new(Text::styled(
-        "Aplicación TUI con Rust",
+        "APP Rust",
         Style::default()
             .fg(Color::LightCyan)
             .add_modifier(Modifier::BOLD),
@@ -186,13 +191,13 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
                         .add_modifier(Modifier::BOLD),
                 )]),
                 Spans::from(vec![Span::raw(format!("{}\n\n", item.description))]),
-                Spans::from(vec![Span::raw("Presiona ESC para volver atrás")]),
+                Spans::from(vec![Span::raw("Press ESC to go back")]),
             ]);
             
             let details = Paragraph::new(detail_text)
                 .block(
                     Block::default()
-                        .title("Detalles")
+                        .title("Details")
                         .borders(Borders::ALL)
                         .border_style(Style::default().fg(Color::LightGreen)),
                 )
@@ -212,7 +217,7 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
         let list = List::new(items)
             .block(
                 Block::default()
-                    .title("Menú principal")
+                    .title("Selection")
                     .borders(Borders::ALL)
                     .border_style(Style::default().fg(Color::LightBlue)),
             )
