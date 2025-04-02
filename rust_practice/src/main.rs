@@ -171,7 +171,7 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
 
     // Título
     let title = Paragraph::new(Text::styled(
-        "APP Rust",
+        "APP in RUST",
         Style::default()
             .fg(Color::LightCyan)
             .add_modifier(Modifier::BOLD),
@@ -232,7 +232,7 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
 
     // Footer
     let footer = Paragraph::new(Text::styled(
-        "↑/↓: Navegar | Enter: Seleccionar | q/ESC: Salir",
+        "Enter: Seleccionar | q/ESC: Salir",
         Style::default().fg(Color::Gray),
     ))
     .alignment(tui::layout::Alignment::Center);
