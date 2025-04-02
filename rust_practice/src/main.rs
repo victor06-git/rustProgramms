@@ -1,3 +1,9 @@
+//Importacions
+/*
+    std::{io, error::Error}: Importa módulos estándar para manejar entrada/salida y errores.
+    crossterm: Proporciona funcionalidades para manejar la terminal, como la entrada de eventos y la manipulación de la pantalla.
+    tui: Proporciona herramientas para construir interfaces de usuario en terminal, incluyendo widgets, estilos y layouts.
+*/
 use std::{io, error::Error};
 use crossterm::{
     execute,
@@ -15,6 +21,11 @@ use tui::{
 };
 use tui::widgets::ListState;
 
+//Estructura Item
+/*
+    Item: Estructura que representa un elemento en la lista, con un título y una descripción.
+    impl Item: Implementación de métodos para la estructura Item, incluyendo un constructor new.
+*/
 #[derive(Debug, Clone)]
 struct Item {
     title: String,
@@ -30,6 +41,11 @@ impl Item {
     }
 }
 
+//Estructura App
+/*
+    App: Estructura que representa el estado de la aplicación, incluyendo una lista de elementos (items), el estado de la lista (state), un indicador para mostrar detalles (show_details), y un indicador para salir (should_quit).
+    Default for App: Implementación del trait Default para inicializar la aplicación con algunos elementos predeterminados
+*/
 struct App {
     items: Vec<Item>,
     state: ListState,
@@ -56,7 +72,16 @@ impl Default for App {
     }
 }
 
+//Metodos en App
+/*
+    next y previous: Métodos para navegar por la lista de elementos.
+    on_key: Maneja la entrada de teclas, permitiendo navegar, seleccionar elementos y salir de la aplicación.
+    toggle_details: Alterna la visualización de detalles del elemento seleccionado.
+    current_item: Devuelve el elemento actualmente seleccionado
+*/
 impl App {
+
+    //Función siguiente
     fn next(&mut self) {
         let i = match self.state.selected() {
             Some(i) => {
@@ -71,6 +96,7 @@ impl App {
         self.state.select(Some(i));
     }
 
+    //Fución anterior
     fn previous(&mut self) {
         let i = match self.state.selected() {
             Some(i) => {
@@ -116,6 +142,13 @@ impl App {
         self.state.selected().map(|i| &self.items[i])
     }
 }
+
+//Funció user interface
+/*
+    ui: Función que dibuja la interfaz de usuario. Utiliza el marco Frame para renderizar widgets en la terminal.
+    Layout: Define cómo se distribuyen los diferentes componentes de la interfaz (título, lista, pie de página).
+    Paragraph y List: Widgets que se utilizan para mostrar texto y listas de elementos, respectivamente.
+*/
 
 fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
     let chunks = Layout::default()
@@ -201,6 +234,7 @@ fn ui<B: tui::backend::Backend>(f: &mut Frame<B>, app: &mut App) {
     f.render_widget(footer, chunks[2]);
 }
 
+//Función para comenzar el programa
 fn startup() -> Result<(), Box<dyn Error>> {
     terminal::enable_raw_mode()?;
     execute!(
@@ -213,6 +247,7 @@ fn startup() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+//Función para parar el programa
 fn shutdown() -> Result<(), Box<dyn Error>> {
     execute!(
         io::stdout(),
@@ -225,6 +260,8 @@ fn shutdown() -> Result<(), Box<dyn Error>> {
     Ok(())
 }
 
+
+//Main function
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn Error>> {
     // Configuración inicial
