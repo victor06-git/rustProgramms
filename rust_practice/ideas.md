@@ -57,3 +57,5 @@
 - Tell people what they can do to learn more rust
 
 - Make the video with a bit of coding, a bit of slides and finally images
+
+- Install Rust on Ubuntu, Windows and Mac
