@@ -12,7 +12,7 @@
 
 ---
 
-## [Scene 1: Installing Rust]
+## Scene 1: Installing Rust
 
 **VA:**  
 "First things first, let’s install Rust on your machine. Rust provides a tool called `rustup` that makes installation easy."
