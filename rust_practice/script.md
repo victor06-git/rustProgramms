@@ -26,7 +26,11 @@
   "Open your command prompt and run the following command:"
 
   ```bash
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  https://static.rust-lang.org/rustup/dist/x86_64-pc-windows-msvc/rustup-init.exe (64bit)
+  
+                                    or
+            
+  https://static.rust-lang.org/rustup/dist/i686-pc-windows-msvc/rustup-init.exe (32bit)
   ```
 - **Ubuntu:**
  
