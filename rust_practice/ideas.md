@@ -63,3 +63,57 @@
 ## Println is a macro?
 
 ![Image](/rust_practice/macro.png)
+
+## Ejemplos
+
+```
+let x: i32 = 10;
+
+let activo: bool = true;
+
+if x > 0 {
+    println!("x es positivo");
+}
+
+fn sumar(a: i32, b: i32) -> i32 {
+    a + b
+}
+
+let resultado = sumar(5, 7);
+
+struct Persona {
+    nombre: String,
+    edad: u32,
+}
+
+let persona = Persona {
+    nombre: String::from("Carlos"),
+    edad: 28,
+}
+
+enum Color {
+    Rojo,
+    Verde,
+    Azul,
+}
+
+fn describir_color(color: Color) {
+    match color {
+        Color::Rojo => println!("Es rojo"),
+        Color::Verde => println!("Es verde"),
+        Color::Azul => println!("Es azul"),
+    }
+}
+
+fn dividir(a: f64, b: f64) -> Result<f64, String> {
+    if b == 0.0 {
+        Err(String::from("No se puede dividir por cero"))
+    } else {
+        Ok(a / b)
+    }
+}
+```
+
+## Iterators
+
+![loop](/rust_practice/)
