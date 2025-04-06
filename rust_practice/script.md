@@ -66,7 +66,7 @@ cargo new name_project
 ```
 
 **VP:**
-"This command creates a new directory called mi_proyecto with a basic project structure. Inside, you’ll find a src folder containing a main.rs file, which is where you’ll write your code."
+"This command creates a new directory called my_project with a basic project structure. Inside, you’ll find a src folder containing a main.rs file, which is where you’ll write your code."
 
 [Visuals: Running the Project]
 
@@ -74,7 +74,7 @@ cargo new name_project
 "To run your project, navigate to the project directory and use the following command:"
 
 ```bash
-cd mi_proyecto
+cd my_project
 cargo run
 ```
 
