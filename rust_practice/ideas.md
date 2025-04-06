@@ -116,4 +116,6 @@ fn dividir(a: f64, b: f64) -> Result<f64, String> {
 
 ## Iterators
 
-![loop](/rust_practice/)
+![loop](/rust_practice/loop.png)
+
+![loop2](/rust_practice/loop2.png)
