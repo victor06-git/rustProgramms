@@ -59,3 +59,7 @@
 - Make the video with a bit of coding, a bit of slides and finally images
 
 - Install Rust on Ubuntu, Windows and Mac
+
+## Println is a macro?
+
+![Image](/rust_practice/macro.png)
