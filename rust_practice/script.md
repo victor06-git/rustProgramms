@@ -1,11 +1,11 @@
-# Script
+# Script (Victor^2)
 
 # Rust Introduction Video Script
 
-## [Opening Scene: Energetic Music, Visuals of Rust Logo and Code Snippets]
+## Opening Scene: Energetic Music, Visuals of Rust Logo and Code Snippets
 
 **VA (Voice Actor):**  
-"Hey everyone! Welcome to our quick introduction to Rust, the programming language that's gaining popularity in the tech world!"
+"Hey everyone! Welcome to our channel! Today, we’re diving into Rust, the programming language that's gaining traction in the tech world. Rust is known for its performance and safety, making it a popular choice among developers.
 
 **VP (Voice Presenter):**  
 "That's right! Whether you're an experienced developer or just starting out, Rust has something for everyone. In this video, we’ll cover how to install Rust, create a new project using Cargo, and explore the basics of Rust programming, including syntax, structures, enums, and error handling. So, let’s dive in!"
@@ -15,9 +15,9 @@
 ## Scene 1: Installing Rust
 
 **VA:**  
-"First things first, let’s install Rust on your machine. Rust provides a tool called `rustup` that makes installation easy."
+"First up, let’s get Rust installed on your machine. Rust offers a useful tool called rustup that simplifies the installation process."
 
-### [Visuals: Installation Steps for Windows, Ubuntu, and Mac]
+###  Installation Steps for Windows, Ubuntu, and Mac
 
 **VP:**  
 "Here’s how to install Rust on different operating systems:"
@@ -46,10 +46,9 @@
     brew install rust
     ```
 
-**VA:**
-"After installation, make sure to add Rust to your system's PATH. You can do this by following the instructions provided in the terminal after installation."
 
 ## Scene 2: Setting Up a New Project with Cargo
+
 **VP:**
 "Now that Rust is installed, let’s create a new project using Cargo, Rust’s package manager and build system."
 
